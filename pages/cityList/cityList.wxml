@@ -1,0 +1,50 @@
+<view class='city_box' >
+      <view class='city_left'>
+          <view class='detailAddress'>
+            <image src='../../img/airplan/search_icon.png'></image>
+            <input type='text' placeholder-class='placeholder-class' bindinput="bindInput"  placeholder='搜索城市'></input>
+          </view>
+          <!-- 搜素提示 -->
+          <view class='content' wx:if="{{show}}">
+            <block wx:for="{{tips}}" wx:key="i" wx:for-index="index">
+              <view class="text_box" data-keywords="{{item}}" bindtap="bindSearch" >
+                <view class='searchArea' data-keywords="{{item}}">
+                  <view data-keywords="{{item}}"> {{item.name}}</view>
+                </view>
+              </view>
+            </block>
+          </view>  
+
+          <scroll-view scroll-y style='width:100%;height:100%;' scroll-with-animation scroll-into-view='{{cityListId}}'>
+              <view class='city_locate' data-types='locate' catchtap='cityTap'>
+                <view class='city_locate_text' style='{{!locateCity&&"color:#33b9ff;"}}'>
+                 <image src='../../img/airplan/icon-city_icon.png' ></image>
+                 {{locateCity|| failLocation}}
+                </view>
+                <view class='city_locate_title' bindtap='relocationBtn'>
+                  <image src='../../img/airplan/fresh_icon.png' class="{{isanimotion?'move1':''}}"></image> 
+                  重新定位
+                </view>
+
+              </view>
+              <!-- <view class='national' data-types='national' catchtap='cityTap'>全国</view> -->
+              <view class='new_city'>
+                  <view class='new_city_title'>热门城市</view>
+                  <view class='new_city_box'>
+                    <text class='new_city_text' wx:for='{{hotCity}}' wx:key='this' data-keywords='{{item}}' bindtap="bindSearch" data-types='new'>{{item.name}}</text>
+                  </view>
+              </view>
+              <!-- 城市列表 -->
+              <view class='city_list_box'>
+                <block wx:for='{{citylist}}' wx:key='this' wx:for-item='letterItem' wx:for-index='letterIndex'>
+                  <view class='city_first_letter' id='{{letterItem.tag}}'>{{letterItem.tag}}</view>
+                  <text class='city_name' wx:for='{{letterItem.cities}}' data-keywords='{{item}}' bindtap="bindSearch" wx:key='this'  wx:for-item='item'  data-index='{{index}}'>{{item.name}}</text>
+                </block>
+              </view>
+          </scroll-view>
+      </view>
+      <!-- 首字母列表 -->
+      <view class='city_right'>
+        <text class='letter_item' wx:for='{{letter}}' wx:key='this' catchtap='letterTap' data-item='{{item}}'>{{item}}</text>
+      </view>
+  </view>

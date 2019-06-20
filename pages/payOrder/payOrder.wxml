@@ -1,0 +1,36 @@
+<!--pages/fightOrderInfo/fightOrderInfo.wxml-->
+<view class='orderInfoTop'>
+  <view class='orderDetailInfo'>
+    <view><text class='orderInfoName'>业务类型：</text><text>{{orderType}}</text></view>
+     <view><text class='orderInfoName'>用车方式：</text><text>{{orderInfo.useType == 2? '包车': '拼车'}}</text></view>
+    
+     <view wx:if='{{orderTypeNum == 2}}'><text class='orderInfoName'>航班号: </text><text>{{orderInfo.shiftNumber}} {{shiftArrOrStartTime}} 出发</text></view>
+
+     <view  wx:if='{{orderTypeNum == 1 }}'><text class='orderInfoName'>航班号: </text><text>{{orderInfo.shiftNumber}} {{shiftArrOrStartTime}} 抵达</text></view>
+
+    <view  wx:if='{{orderTypeNum == 3}}'><text class='orderInfoName'>班次号: </text><text>{{orderInfo.shiftNumber}} {{shiftArrOrStartTime}} 抵达</text></view>
+
+     <view  wx:if='{{orderTypeNum == 4}}'><text class='orderInfoName'>班次号: </text><text>{{orderInfo.shiftNumber}} {{shiftArrOrStartTime}} 出发</text></view>
+
+    <view><text class='orderInfoName'>接送时间：</text><text>{{willStartDate}} {{willStartTime}}</text></view>
+     <view wx:if='{{orderTypeNum==1 || orderTypeNum==3 }}'>
+      <view><text class='orderInfoName'>接送地点：</text><text>{{orderInfo.startAddress}}</text></view>
+      <view><text class='orderInfoName'>目的地：</text><text>{{orderInfo.endAddress}}</text></view>
+    </view>
+    <view wx:if='{{orderTypeNum==2 || orderTypeNum==4}}'>
+      <view><text class='orderInfoName'>接送地点：</text><text>{{orderInfo.startAddress}}</text></view>
+      <view><text class='orderInfoName'>目的地：</text><text>{{orderInfo.endAddress}}</text></view>
+    </view>
+    <view><text class='orderInfoName'>分销商信息:</text><text> {{sellerId}}</text> </view>
+    <view wx:if='{{orderInfo.useType == 2}}'><text class='orderInfoName'>车辆类型: </text><text>{{orderInfo.goodsName}}</text></view>
+    <view wx:if='{{orderInfo.useType == 1}}'><text class='orderInfoName'>人数: </text><text>{{orderInfo.passengerNumber}}人</text></view>
+    <view><text class='orderInfoName'>联系人: </text><text>{{orderInfo.contacts}}</text></view>
+    <view><text class='orderInfoName'>联系电话: </text><text>{{orderInfo.contactNumber}}</text></view>
+  </view>
+</view>
+<view class='payOrder'>
+  <view class='payMoneyBox'>
+    <text class='payMoney'>总额：<text class='payMoneyText'>￥{{payMoney}}</text></text> 
+    <text class='payMoneyBtn' hover-class='searchAirAct' bindtap='gotoPayOrder'>支付</text>
+  </view>
+</view>

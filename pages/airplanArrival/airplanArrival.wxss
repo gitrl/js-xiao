@@ -1,0 +1,80 @@
+/* pages/airplanArrival/airplanArrival.wxss */
+page{
+  background: #fff
+}
+.detailAddress{
+  width:85%;
+  margin: 30rpx auto;
+  height:86rpx;
+  border: 1px solid #DDDDDD;
+  border-radius:50rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx
+}
+.detailAddress image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.detailAddress input{
+  height: 100%;
+  margin-left: 20rpx;
+}
+.placeholder-class{
+  font-size: 30rpx;
+}
+.currentCity {
+  border-bottom: 3rpx solid #f7f7f7;
+  height:105rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+.currentCity image{
+  width:18px;
+  height:20px;
+  margin-right: 20rpx;
+}
+.currentCityBox{
+  width:90%;
+  padding-bottom: 30rpx;
+  margin: 0 auto;
+}
+.hotArea{
+  margin: 30rpx 0;
+  font-size: 30rpx;
+}
+.areaList{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+  font-size: 28rpx;
+}
+.areaList view{
+  padding:10rpx 30rpx;
+  color: #666666;
+  margin: 30rpx 0;
+  border: 3rpx solid #EFEFEF;
+  border-radius: 50rpx;
+}
+.searchAir{
+  width: 90%
+}
+.bgGry{
+  background-color: #F5F5F5;
+  border: none !important;
+}
+.inputTips{
+  display: flex;
+  align-items:center;
+  margin: 30rpx 0;
+}
+.inputTips image{
+  width: 25rpx;
+  height: 35rpx;
+  margin-right: 20rpx
+}
+.itemAddress{
+  font-size: 25rpx;
+  color: #AAAAAA
+}

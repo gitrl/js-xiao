@@ -1,0 +1,248 @@
+<!--pages/coupon/coupon.wxml-->
+<view class='airPlanOrder' style="height:{{winHeight+250}}rpx">
+  <view class='bannerTop'>
+    <image src='../../img/airplan/myorder_bg.png'></image>
+  </view>
+  <view class='airplan' style="height:{{winHeight+250}}rpx;">
+      <!-- <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}"> -->
+    <view class="tab-h">
+      <view class='tabTile'>
+        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">全 部</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">待付款</view>
+        <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">已付款</view>
+      </view>
+    </view>
+    <!-- </scroll-view> -->
+    <swiper class="tab-content" current="{{currentTab}}" duration="100"  style="height:{{winHeight}}">
+      <!-- 全部 -->
+      <swiper-item catchtouchmove="stopTouchMove">
+       <!-- bindscrolltolower='loadMore' -->
+        <scroll-view class="scoll-h"  style="height:{{winHeight+250}}rpx;" scroll-y="true" bindscrolltolower='loadMore'>
+          <block wx:for="{{orderList}}" wx:key="i" wx:for-index="index" >
+            <view class="item-ans" style='height:{{item.orderStatus==2 && item.checkStatus==1&& item.qrCode != ""? "820rpx":(item.orderStatus==2 && item.checkStatus==1 && item.qrCode == "")?"700rpx":""}}' bindtap='slidToPorder' data-orderstatus='{{item.orderStatus}}' data-orderid='{{item.orderId}}'>
+              <view class="avatar" wx:if="{{item.orderStatus==1}}">
+                <image class="img" src="../../img/airplan/ticketpay_s.png"></image>
+              </view>
+              <view class="avatar" wx:if="{{item.orderStatus==2 && item.checkStatus==1  && item.qrCode != '' }}">
+                <image class="img" src="../../img/airplan/ticketpay_s1.png"></image>
+              </view>
+               <view class="avatar" wx:if="{{item.orderStatus==2 && item.checkStatus==1  && item.qrCode == '' }}">
+                <image class="img" src="../../img/airplan/ticketpay_s12.png"></image>
+              </view>
+              <view class="avatar" wx:if="{{item.orderStatus==2 && item.checkStatus==2}}">
+                  <image class="img" src="../../img/airplan/ticketpay_s2.png"></image>
+              </view>
+              <view class="avatar" wx:if="{{item.orderStatus==3}}">
+                  <image class="img" src="../../img/airplan/ticketpay_s3.png"></image>
+              </view>
+              <view class="avatar" wx:if="{{item.orderStatus==4}}">
+                  <image class="img" src="../../img/airplan/ticketpay_s3.png"></image>
+              </view>
+              <view class="avatar" wx:if="{{item.orderStatus==5}}">
+                <image class="img" src="../../img/airplan/ticketpay_s3.png"></image>
+              </view>
+              <view class="couponInfo">
+                <view class='type-comm type'>
+                  <view class='type-comm type'>
+                    <image wx:if="{{item.orderType==1 || item.orderType== 2}}" src='../../img/airplan/airplan_icon.png' style='width:36rpx;height:36rpx;margin-right:20rpx'></image>
+                    <image wx:if="{{item.orderType==3 || item.orderType== 4}}" src='../../img/airplan/train_icon.png' style='width:36rpx;height:36rpx;margin-right:20rpx'></image>
+
+                    
+                      <view wx:if="{{item.orderType==1}}">接机 <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                      <view wx:if="{{item.orderType==2}}">送机 <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                      <view wx:if="{{item.orderType==3}}">接站 <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                      <view wx:if="{{item.orderType==4}}">送站 <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                  </view>
+                  <view  class='orderStatus'>
+                    <text wx:if="{{item.orderStatus==1}}">{{countDownList[index]}} 待付款</text>
+                    <text wx:if="{{item.orderStatus==2 && item.checkStatus==1}}" style='color:#44A0FE'>待核销</text>
+                    <text wx:if="{{item.orderStatus==2 && item.checkStatus==2}}" class='colorCCC'>已核销</text>
+                    <text wx:if="{{item.orderStatus==3}}" class='colorCCC'>已完成</text>
+                    <text wx:if="{{item.orderStatus==4}}" class='colorCCC'>退款中</text>
+                    <text wx:if="{{item.orderStatus==5}}" class='colorCCC'>已取消</text>
+                  </view>
+                </view>
+                <view class='type-comm marginTop35'>
+                  <view class='orderInfo' style='width:100%'>
+                    <view class='addressTo'>{{item.startAddress}} - {{item.endAddress}}</view>
+                    <view wx:if='{{item.orderDrivers.length <=0 }}'>
+                      <view>司机 : 未派车</view>
+                      <view wx:if='{{item.useType == 1}}'>车辆 :未派车</view>
+                      <view wx:if='{{item.useType == 2}}'>车辆 : {{item.goodsName}}</view>
+                    </view>
+                    <view wx:if='{{item.orderDrivers.length > 0}}'>
+                      <view >司机 : {{item.orderDrivers[0].driverName}} {{item.orderDrivers[0].driverNumber}}</view>
+                      <view>车辆 : {{item.orderDrivers[0].plateNumber }} <text wx:if='{{item.useType == 2}}'>. {{item.goodsName}}</text></view>
+                    </view>
+                  </view>
+                </view>
+                  <view class='type-comm colorCCC marginTop'>
+                    <view class='orderInfo'>
+                      <view >联系人: {{item.contacts}} {{item.contactNumber}}</view>
+                      <view>预计上车时间 : {{willStartDate[index]}} {{willStartTime[index]}} </view>
+                      <view>航班号：{{item.shiftNumber}}</view>
+                    </view>
+                    <view class='textalignR orderInfo'>
+                    <!-- 包车不显示人数，拼车显示人数 -->
+                      <view class='addressTo' wx:if='{{item.useType== 1}}'>{{item.passengerNumber}}人</view>
+                      <view class='addressTo'>￥{{(item.totalPrice)/100}}</view>
+                    </view>
+                  </view>
+                  <view bindtap='tapHandler' data-qrcode='{{item.qrCode}}' wx:if="{{item.orderStatus==2 && item.checkStatus==1 && item.qrCode != ''}}" class='type-comm colorCCC marginTop'>
+                    <view>我的二维码</view>
+                    <view class='type-comm'>
+                      <view><image src='../../img/airplan/erweima_icon.png' style='width:60rpx;height:60rpx'></image></view>
+                      <view class='marginL30'> <image src='../../img/airplan/right_icon.png' style='width:18rpx;height:25rpx'></image> </view>
+                    </view>
+                  </view>
+                  <view wx:if="{{item.orderStatus==2 && item.checkStatus==1}}" class='cancelBtn marginTop' catchtap='cancelOrder' data-orderid='{{item.orderId}}'>取消订单</view>
+              </view>
+            </view> 
+          </block>
+          <view class="tips1">
+            <view wx:if="{{hasMore}}" class='loadMore'>
+            <icon class='iconLoad move1' type="waiting" size="20"/><text>上拉加载更多</text></view>
+            <view wx:else class='loadMore'><text>没有更多内容了</text></view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!-- 待付款 -->
+      <swiper-item catchtouchmove="stopTouchMove">
+        <scroll-view class="scoll-h" style="height:{{winHeight+250}}rpx;" scroll-y="true" bindscrolltolower='loadMore'>
+          <block wx:for="{{orderList}}" wx:key="i" wx:for-index="index" >
+            <view class="item-ans" bindtap='slidToPorder' data-orderstatus='{{item.orderStatus}}' data-orderid='{{item.orderId}}'>
+              <view class="avatar">
+                <image class="img" src="../../img/airplan/ticketpay_s.png"></image>
+              </view>
+              <view class="couponInfo">
+                <view class='type-comm type '>
+                   <view class='type-comm type'>
+                      <image wx:if="{{item.orderType==1 || item.orderType== 2}}" src='../../img/airplan/airplan_icon.png' style='width:36rpx;height:36rpx;margin-right:20rpx'></image>
+                      <image wx:if="{{item.orderType==3 || item.orderType== 4}}" src='../../img/airplan/train_icon.png' style='width:36rpx;height:36rpx;margin-right:20rpx'></image>
+                      <view wx:if="{{item.orderType==1}}">接机  <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                      <view wx:if="{{item.orderType==2}}">送机  <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                      <view wx:if="{{item.orderType==3}}">接站  <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                      <view wx:if="{{item.orderType==4}}">送站  <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                   </view>
+                  <view  class='orderStatus'>
+                    <text wx:if="{{item.orderStatus==1}}">{{countDownList[index]}} 待付款</text>
+                  </view>
+                </view>
+                <view class='type-comm marginTop35'>
+                  <view class='orderInfo'  style='width:100%'>
+                    <view class='addressTo'>{{item.startAddress}} - {{item.endAddress}}</view>
+                    <view wx:if='{{item.orderDrivers.length <=0 }}'>
+                      <view>司机 : 未派车</view>
+                      <view wx:if='{{item.useType == 1}}'>车辆 : 未派车</view>
+                      <view wx:if='{{item.useType == 2}}'>车辆 : {{item.goodsName}}</view>
+                    </view>
+                    <view wx:if='{{item.orderDrivers.length > 0}}'>
+                      <view >司机 : {{item.orderDrivers[0].driverName}} {{item.orderDrivers[index].driverNumber}}</view>
+                      <view>车辆 : {{item.orderDrivers[0].plateNumber }}  <text wx:if='{{item.useType == 2}}'>. {{item.goodsName}}</text></view>
+                    </view>
+                  </view>
+                </view>
+                <view class='type-comm colorCCC marginTop'>
+                  <view class='orderInfo'>
+                    <view >联系人: {{item.contacts}} {{item.contactNumber}}</view>
+                    <view>预计上车时间 : {{willStartDate[index]}} {{willStartTime[index]}} </view>
+                    <view>{{item.shiftNumber}}</view>
+                  </view>
+                    <!-- 包车不显示人数，拼车显示人数 -->
+                  <view class='textalignR orderInfo'>
+                    <view class='addressTo'  wx:if='{{item.useType== 1}}'>{{item.passengerNumber}}人</view>
+                    <view class='addressTo'>￥{{(item.totalPrice)/100}}</view>
+                  </view>
+                </view>
+              </view>
+            </view> 
+          </block>
+          <view class="tips1">
+            <view wx:if="{{hasMore}}" class='loadMore'>
+            <icon class='iconLoad move1' type="waiting" size="20"/><text>上拉加载更多</text></view>
+            <view wx:else class='loadMore'><text>没有更多内容了</text></view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!-- 已完成 -->
+      <swiper-item catchtouchmove="stopTouchMove">
+        <scroll-view  class="scoll-h" style="height:{{winHeight+250}}rpx;" scroll-y="true" bindscrolltolower='loadMore'>
+          <block wx:for="{{orderList}}" wx:key="i" wx:for-index="index" >
+            <view class="item-ans" style='height:{{item.orderStatus==2 && item.checkStatus==1&& item.qrCode != ""? "820rpx":(item.orderStatus==2 && item.checkStatus==1 && item.qrCode == "")?"700rpx":""}}'>
+              <view class="avatar" wx:if="{{item.orderStatus==2 && item.checkStatus==1  && item.qrCode != '' }}">
+                <image class="img" src="../../img/airplan/ticketpay_s1.png"></image>
+              </view>
+               <view class="avatar" wx:if="{{item.orderStatus==2 && item.checkStatus==1  && item.qrCode == '' }}">
+                <image class="img" src="../../img/airplan/ticketpay_s12.png"></image>
+              </view>
+              <view class="avatar" wx:if="{{item.orderStatus==2 && item.checkStatus==2}}">
+                  <image class="img" src="../../img/airplan/ticketpay_s2.png"></image>
+              </view>
+              <view class="couponInfo {{item.orderStatus==1 || item.orderStatus==2?'':'colorCCC'}}">
+                <view class='type-comm type '>
+                   <view class='type-comm type'>
+                      <image wx:if="{{item.orderType==1 || item.orderType== 2}}" src='../../img/airplan/airplan_icon.png' style='width:36rpx;height:36rpx;margin-right:20rpx'></image>
+                      <image wx:if="{{item.orderType==3 || item.orderType== 4}}" src='../../img/airplan/train_icon.png' style='width:36rpx;height:36rpx;margin-right:20rpx'></image>
+                      <view wx:if="{{item.orderType==1}}">接机  <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                      <view wx:if="{{item.orderType==2}}">送机  <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                      <view wx:if="{{item.orderType==3}}">接站  <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                      <view wx:if="{{item.orderType==4}}">送站  <text>{{item.useType== 1?'(拼车)':'(包车)'}}</text></view>
+                   </view>
+                  <view  class='orderStatus'>
+                  <text wx:if="{{item.orderStatus==2 && item.checkStatus==1}}" style='color:#44A0FE'>待核销</text>
+                    <text wx:if="{{item.orderStatus==2 && item.checkStatus==2}}" class='colorCCC'>已核销</text>
+                  </view>
+                </view>
+                <view class='type-comm marginTop35'>
+                  <view class='orderInfo'  style='width:100%'>
+                    <view class='addressTo'>{{item.startAddress}} - {{item.endAddress}}</view>
+                    <view wx:if='{{item.orderDrivers.length <=0 }}'>
+                      <view>司机 : 未派车</view>
+                      <view wx:if='{{item.useType == 1}}'>车辆 : 未派车</view>
+                      <view wx:if='{{item.useType == 2}}'>车辆 : {{item.goodsName}}</view>
+                    </view>
+                    <view wx:if='{{item.orderDrivers.length > 0}}'>
+                      <view >司机 : {{item.orderDrivers[0].driverName}} {{item.orderDrivers[index].driverNumber}}</view>
+                      <view>车辆 : {{item.orderDrivers[0].plateNumber }}  <text wx:if='{{item.useType == 2}}'>. {{item.goodsName}}</text></view>
+                    </view>
+                  </view>
+                </view>
+                <view class='type-comm colorCCC marginTop'>
+                  <view class='orderInfo'>
+                    <view >联系人: {{item.contacts}} {{item.contactNumber}}</view>
+                    <view>预计上车时间 : {{willStartDate[index]}} {{willStartTime[index]}} </view>
+                    <view>{{item.shiftNumber}}</view>
+                  </view>
+                  <view class='textalignR orderInfo'>
+                    <view class='addressTo'  wx:if='{{item.useType== 1}}'>{{item.passengerNumber}}人</view>
+                    <view class='addressTo'>￥{{(item.totalPrice)/100}}</view>
+                  </view>
+                </view>
+                <view bindtap='tapHandler' data-qrcode='{{item.qrCode}}' wx:if="{{item.orderStatus==2 && item.checkStatus==1 && item.qrCode != ''}}" class='type-comm colorCCC marginTop'>
+                    <view>我的二维码</view>
+                    <view class='type-comm'>
+                      <view><image src='../../img/airplan/erweima_icon.png' style='width:60rpx;height:60rpx'></image></view>
+                      <view class='marginL30'> <image src='../../img/airplan/right_icon.png' style='width:18rpx;height:25rpx'></image> </view>
+                    </view>
+                </view>
+                <view wx:if="{{item.orderStatus==2 && item.checkStatus==1}}" class='cancelBtn marginTop' catchtap='cancelOrder' data-orderid='{{item.orderId}}'>取消订单</view>
+              </view>
+            </view> 
+          </block>
+          <view class="tips1">
+            <view wx:if="{{hasMore}}" class='loadMore'>
+            <icon class='iconLoad move1' type="waiting" size="20"/><text>上拉加载更多</text></view>
+            <view wx:else class='loadMore'><text>没有更多内容了</text></view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+</view>
+<view class='erweiCode' bindtap='closeErweiCode'  wx:if='{{isShowCode}}'>
+    <view class="mengC">    </view>
+    <view class="canvas-box">
+      <canvas style="width: 350rpx;height: 350rpx;" canvas-id="canvas"/>
+    </view>
+</view>

@@ -1,0 +1,60 @@
+/* pages/PersonalCenter/seller/Crash.wxss */
+.commissionTop{
+  padding: 40rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+
+}
+.commissionSum{
+  font-size: 40rpx;
+  margin: 20rpx 0
+}
+.commissionTime{
+  justify-content: center;
+  margin-top: 20rpx
+}
+.commissionTime input{
+  width: 180rpx;
+  border: 1px solid #dadded;
+  margin: 0 20rpx
+}
+.commissionOrder{
+  padding: 5rpx 30rpx;
+  font-size: 26rpx;
+  /* line-height:60rpx; */
+  padding-bottom:130rpx;
+}
+.commissionOrder .commissionList{
+  line-height: 60rpx
+}
+.commissionOrderRight{
+  width:100rpx;
+  border-left:1px solid #ccc;
+  text-align:right;
+
+}
+.orderStatus{
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  bottom: 0;
+  background: #fff;
+  color: #AAAAAA;
+  height: 100rpx;
+  
+}
+.orderStatusItem{
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  line-height: 100rpx
+}
+.currentTab{
+  color: #fff;
+  background: -webkit-linear-gradient(left,  #407FFD 30%,#44A0FE 100%);
+}
+.noContext{
+  justify-content:center;
+  height:700rpx;
+  flex-direction: column
+}

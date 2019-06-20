@@ -1,0 +1,29 @@
+<!--pages/airplanNumList/airplanNumList.wxml-->
+<view class='notice'> 
+<image src='../../img/airplan/notice_icon.png'></image> 具体航班时间以航空公司为准</view>
+<scroll-view class="scroll_container"  wx:if='{{isShow}}'> 
+  <view class='airplanList'>
+    <view class='flightInfo'  wx:for="{{flightList}}" wx:key="*this">
+      <view class='flightInfoImg'>
+        <image src='../../img/airplan/ticket_bg.png'></image></view>
+        <view class='flightInfoTime'>
+          <view class='flightInfoDetail textAlignCenter'>
+            <view>
+              <view class='flighttoTime'>{{item.flighTimetList.depTime}}</view>
+              <view class='fontS25'>{{item.depCity}}{{item.depTerminal}}</view>
+            </view>
+            <image class='flightToImg' src='../../img/airplan/garyarrow_icon.png'></image>
+            <view>
+              <view class='flighttoTime'>{{item.flighTimetList.arrTime}}</view>
+              <view class='fontS25'>{{item.arrCity}}{{item.arrTerminal}}</view>
+            </view>
+            <view class='chooseFlightBtn'  data-flightno='{{item.flightNo}}' data-arrtime='{{item.arrTime}}' data-deptime='{{item.depTime}}' bindtap='chooseFlifhtNum'>选择</view>
+          </view>
+          <view class='airCommplany'>{{item.airCompany}}{{item.flightNo}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view wx:else class='checkFail'>
+  {{failMsg}}
+</view>

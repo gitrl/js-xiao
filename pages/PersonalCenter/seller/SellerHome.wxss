@@ -1,0 +1,51 @@
+page{
+  height: 100%;
+  background: #fff
+}
+.sellerCenterTop{
+  height: 300rpx;
+  background:#428FFD;
+  color: #fff;
+  padding: 0 40rpx
+}
+.sellerBalanceText{
+  height: 150rpx;
+  line-height: 150rpx
+}
+.sellerBalance{
+  /* display: flex; */
+  height: 100rpx;
+  /* line-height: 100rpx; */
+  font-size: 60rpx;
+  /* justify-content: space-between */
+}
+/* 提现 */
+.CashWithdrawal{
+  background: #fff;
+  color: #407FFD;
+  width: 120rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  padding: 0 20rpx;
+  font-size: 30rpx;
+  border-radius:50rpx 
+}
+
+.sellerCenterBott{
+  padding: 0 40rpx;
+  color: #666666
+}
+.sellerCenterInfo{
+  border-bottom: 1px solid #dadded;
+  height: 120rpx;
+}
+.sellerShare{
+  width:80%;
+  margin:85rpx auto;
+  text-align:center;
+  height:100rpx;
+  line-height:100rpx;
+  font-size:32rpx;
+
+}

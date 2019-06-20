@@ -1,0 +1,34 @@
+<!--pages/PersonalCenter/seller/cashRule.wxml-->
+<view class='cashRule'>
+  <view style='text-align:center'>提现规则</view>
+  <view class='cashRuleMidd'>
+    <view class='cashRuleItem flexView borderBottom'>
+      <view>提现时间</view>
+      <view>每周{{cashTime}}</view>
+    </view>
+    <view class='cashRuleItem flexView borderBottom'>
+      <view>到账时间</view>
+      <view>72小时内（节假日顺延）</view>
+    </view>
+    <view class='cashRuleItem flexView borderBottom'>
+      <view>单日提现额度</view>
+      <view>{{maxDayAmount}}元</view>
+    </view>
+    <view class='cashRuleItem flexView borderBottom'>
+      <view>提现次数</view>
+      <view>单日{{times}}次</view>
+    </view>
+    <view class='cashRuleItem flexView borderBottom'>
+      <view>单次限额</view>
+      <view>{{minAmount}} - {{maxAmount}} 元</view>
+    </view>
+  </view>
+
+  <view class='colorG' style='line-height:55rpx'>
+    <view><text class='colorY'>*</text> 仅支持提现到储蓄卡</view>
+    <view><text class='colorY'>*</text> 注册姓名与提现银行卡姓名必须一致</view>
+    <view><text class='colorY'>*</text> 支持的银行：工商银行、建设银行、光大银行</view>
+    <view><text class='colorY'>*</text>  如出现提现失败的情况，请核实银行卡号以及姓名是 否填写一致，并向对应开户行咨询卡状态是否正常 </view>
+
+  </view>
+</view>

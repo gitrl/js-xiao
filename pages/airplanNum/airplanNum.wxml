@@ -1,0 +1,45 @@
+<!--pages/airplanNum/airplanNum.wxml-->
+<view class='airplan'>
+  <view class='tab-h'>
+      <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">航班号</view>
+      <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">出发地&目的地</view>
+  </view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="100" bindchange="switchTab" >
+      <swiper-item >
+        <scroll-view scroll-y="true" class="scoll-h" style='padding-bottom:30rpx'>
+            <view class='airplanCheck'>
+              <view class="areaInput">
+                <image class='dateChoose' src='../../img/airplan/airplan_icon.png' ></image>
+                <input name="input" placeholder-class='placeClass' placeholder="请输入航班号" bindinput="airplanNum" />
+              </view>
+             <picker  mode="date" value="{{date}}" start="{{startDate}}" end='{{endDate}}' bindchange="bindDateChange">
+              <view class="areaInput">
+                  <image class='dateChoose' src='../../img/airplan/dairy_icon.png' ></image>
+                  <input name="input" placeholder-class='placeClass' disabled='true'  placeholder="请选择起飞时间" value="{{date}}"/>
+              </view>
+             </picker>
+            <button class='searchAir' hover-class='searchAirAct' bindtap='searcFlightNum'>查询</button>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <swiper-item >
+        <scroll-view scroll-y="true" class="scoll-h" >
+          <view class='airplanCheck '>
+            <view class="areaInput startEnd">
+              <input name="startArea"  bindinput ="startAreaInput" disabled='true'  bindtap='slidToChooseAreastart' type='text' placeholder="出发地" value='{{start.name}}'/>
+              <image class='areaChange' formType="submit" src='../../img/airplan/exchangebig_icon.png' ></image>
+              <input name="endArea" placeholder-class='placeClass' type='text' disabled='true' bindinput ="endAreaInput" bindtap='slidToChooseAreaend' placeholder="目的地" value='{{end.name}}'/>
+            </view>
+              <picker mode="date" value="{{date2}}" start="{{startDate}}" end='{{endDate}}' bindchange="bindDate2Change">
+              <view class="areaInput">
+                <image class='dateChoose' src='../../img/airplan/dairy_icon.png' ></image>
+                <input name="input" placeholder-class='placeClass' disabled='true'  class='startTime' placeholder="预计出发时间" value="{{date2}}"/>
+              </view>
+              </picker>
+            <button class='searchAir' hover-class='searchAirAct' bindtap='searcFlightCity'>查询</button>
+          </view>
+
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+</view>

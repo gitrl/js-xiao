@@ -1,0 +1,70 @@
+/* pages/airplanNumList/airplanNumList.wxss */
+.notice{
+  height:80rpx;
+  background-color:#fff;
+  line-height:80rpx;
+  padding-left:45rpx;
+  color:#AAAAAA;
+}
+.notice image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.flightInfo{
+  width: 95%;
+  height: 280rpx;
+  position: relative;
+  margin: 0 auto
+}
+.flightInfoImg,.flightInfoImg image{
+  width: 100%;
+  height: 100%
+}
+.flightInfoTime{
+  position: absolute;
+  top: 0rpx;
+  width: 90%;
+  height:100%;
+  margin: 0 auto;
+  left:0;
+  right:0;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+}
+.flightInfoDetail{
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+
+}
+.flighttoTime{
+  color:#666666;
+  font-size:45rpx;
+}
+.flightToImg{
+  width: 60rpx;
+  height: 10rpx
+}
+.chooseFlightBtn{
+  width: 130rpx;
+  height: 60rpx;
+  background: #44A0FE;
+  color: #fff;
+  border-radius: 20px;
+  line-height: 60rpx;
+  text-align: center;
+
+}
+.airCommplany{
+  margin-left: 30rpx
+}
+.checkFail{
+  display:flex;
+  align-items:center;
+  height:500rpx;
+  justify-content:center;
+  color:#c7c7c7;
+  font-size:45rpx;
+
+}

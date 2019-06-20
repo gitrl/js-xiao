@@ -1,0 +1,32 @@
+<view class='sellerCenter'>
+  <view class='sellerCenterTop'>
+    <view class='sellerBalanceText'>余额</view>
+    <view class='sellerBalance flexView'>
+      <text> {{balance}}</text>
+      <text class='CashWithdrawal' catchtap='cash'>提现</text>
+    </view>
+  </view>
+  <view class='sellerCenterBott'>
+    <view class='sellerCenterInfo flexView' catchtap='shareErweiCode'>
+      <view>  我的分销二维码 </view>
+      <view> <image style='width:40rpx;height:40rpx' src='../../../img/mode_icon.png'></image> </view>
+    </view>
+    <view class='sellerCenterInfo flexView' catchtap='bandCard'>
+      <view>  银行卡 </view>
+      <view class='colorG'> {{card}}</view>
+    </view>
+    <view class='sellerCenterInfo flexView'>
+      <view>  联系电话 </view>
+      <view> {{phone}} </view>
+    </view>
+    <view class='sellerCenterInfo flexView' catchtap='commissionRecord'>
+      <view>  佣金明细 </view>
+      <view class=''> <image style='width:14rpx;height:18rpx' src='../../../img/airplan/right_icon.png'></image></view>
+    </view> 
+    <view class='sellerCenterInfo flexView' catchtap='cashRecord'>
+      <view>  提现记录 </view>
+    <image style='width:14rpx;height:18rpx' src='../../../img/airplan/right_icon.png'></image>
+    </view>
+  </view>
+</view>
+<button open-type="share" class='sellerShare searchAir'>分销</button>

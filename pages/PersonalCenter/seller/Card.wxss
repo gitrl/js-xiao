@@ -1,0 +1,27 @@
+.cardInfoTop{
+  background: #fff;
+}
+.cardInfo{
+  /* width: 90%; */
+  /* margin: 0 auto; */
+  padding: 0 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #dadded;
+  justify-content:flex-start
+}
+.bindCardExplain{
+  color:#ccc;
+  font-size:26rpx;
+  height:80rpx;
+  line-height:80rpx;
+  padding:20rpx;
+}
+.bindingBtn{
+  width: 80%;
+  margin: 30rpx auto;
+  text-align: center;
+  height:100rpx;
+  line-height: 100rpx;
+  font-size: 32rpx
+}

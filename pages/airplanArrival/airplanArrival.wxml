@@ -1,0 +1,28 @@
+<!--pages/airplanArrival/airplanArrival.wxml-->
+  <view class='detailAddress'>
+    <image src='../../img/airplan/search_icon.png'></image>
+    <input type='text' data-keywords="{{value}}" value='{{value}}' placeholder-class='placeholder-class' bindinput="inputTips" placeholder='请输入详细地址'></input>
+  </view>  
+<view class='currentCityBox'>
+  <!-- 当前城市 -->
+  <view class='currentCity'>
+    <image src='../../img/airplan/icon-city_icon.png'></image>
+    <text>拉萨</text>
+  </view>
+  <!-- 热门地址 -->
+  <view class='hotArea' wx:if="{{isHotShow}}">
+    <view>热门地址</view>
+    <view class='areaList'>
+      <view wx:for='{{hotAddressList}}' wx:key='this' data-keywords='{{item}}' bindtap='chooseAreaItem'>{{item.title}}</view>
+    </view>
+  </view>
+
+  <view class='inputTips' wx:for="{{tips}}" wx:key="i" wx:if="{{isTipShow}}" data-keywords='{{item}}'>
+    <image src='../../img/airplan/navigation_icon.png'></image>
+    <view class='tipItem' bindtap='chooseAreaItem' data-keywords='{{item}}'>
+      <view data-keywords='{{item}}'>{{item.title}}</view>
+      <view data-keywords='{{item}}' class='itemAddress'>{{item.address}}</view>
+    </view>
+  </view>
+  
+</view>

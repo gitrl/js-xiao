@@ -1,0 +1,68 @@
+<!--pages/fightOrderInfo/fightOrderInfo.wxml-->
+<view class='orderInfoTop'>
+  <view class='orderDetailInfo'>
+    <view><text class='orderInfoName'>业务类型：</text><text>{{orderInfo.start.goodsName}}</text></view>
+    <view><text class='orderInfoName'>用车方式：</text><text>{{orderInfo.useCarWay == 0? '包车': '拼车'}}</text></view>
+    <view wx:if='{{orderInfo.type==2}}'><text class='orderInfoName'>航班号: </text><text>{{orderInfo.flightNum}} {{orderInfo.flightDepTime}}出发</text></view>
+    <view  wx:if='{{orderInfo.type==1 || orderInfo.type==3 }}'><text class='orderInfoName'>航班号: </text><text>{{orderInfo.flightNum}} {{orderInfo.flightArrTime}}抵达</text></view>
+     <view  wx:if='{{orderInfo.type==4}}'><text class='orderInfoName'>航班号: </text><text>{{orderInfo.flightNum}} {{orderInfo.flightArrTime}}出发</text></view>
+     
+    <view><text class='orderInfoName'>接送时间：</text><text>{{orderInfo.useCarDate}} {{orderInfo.useCarTime}}</text></view>
+    <view wx:if='{{orderInfo.type==1 || orderInfo.type==3 }}'>
+      <view><text class='orderInfoName'>出发地：</text><text>{{orderInfo.start.name}}</text></view>
+      <view><text class='orderInfoName'>目的地：</text><text>{{orderInfo.end.title}}</text></view>
+    </view>
+    <view wx:if='{{orderInfo.type==2 || orderInfo.type==4}}'>
+      <view><text class='orderInfoName'>出发地：</text><text>{{orderInfo.end.title}}</text></view>
+      <view><text class='orderInfoName'>目的地：</text><text>{{orderInfo.start.name}}</text></view>
+    </view>
+    <view> <text class='orderInfoName'>分销商信息: </text> <text>{{sellerId}}</text></view>
+    <view  wx:if='{{orderInfo.useCarWay == 1}}'><text class='orderInfoName'>单价：</text><text>{{price}}元/人</text></view>
+
+  </view>
+</view>
+<view class='infoList'>信息填写</view>
+<view class='orderPerson'>
+  <view class='orderPersonInfo' wx:if='{{orderInfo.useCarWay == 1}}'>
+    <text class='orderInfoName'>人数(最多选择20人)</text>
+    <view class='personNum'>
+      <view  class='choosePerson' bindtap='subPerson' >
+        <image  style='height:5rpx;margin-left:0' src='../../img/airplan/minus_icon.png'></image>
+      </view>
+      <text class='personNumShow'>{{personNum}}</text>
+      <view class='choosePerson' bindtap='addPerson' >
+        <image  src='../../img/airplan/plus_icon.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='orderPersonInfo' wx:if='{{orderInfo.useCarWay == 0}}'>
+    <text class='orderInfoName'>车辆类型</text>
+    <view class='personNum'>
+     {{orderInfo.useCarType}}
+    </view>
+  </view>
+
+  <view class='orderPersonInfo'>
+    <text class='orderInfoName'>联系人</text>
+    <view class='personNum'>
+      <input type='text'  bindinput ="nameInput" maxlength='20' value='{{userName}}' placeholder='请输入联系人姓名'/>
+      <image src='../../img/airplan/write_icon.png'></image>
+    </view>
+  </view>
+   <view class='orderPersonInfo'>
+    <text class='orderInfoName'>联系电话</text>
+    <view class='personNum'>
+      <input type='text' bindinput ="phoneInpout" maxlength='20' value='{{phoneNum}}' placeholder='请输入联系人电话'/>
+      <image src='../../img/airplan/write_icon.png'></image>
+    </view>
+  </view>
+</view>
+<view class='payOrder'>
+    <view class='userAgreement'>
+    点击下单表示您已阅读并同意接送服务<text style='color:#44A0FE' bindtap='orderKnow'>《预定须知》</text> 
+  </view>
+  <view class='payMoneyBox'>
+    <text class='payMoney'>总额：<text class='payMoneyText'>￥{{payMoney}}</text></text> 
+    <text class='payMoneyBtn' hover-class='searchAirAct' disabled='{{!maskFlag}}' bindtap='gotoPayOrder'>下单</text>
+  </view>
+</view>

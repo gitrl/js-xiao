@@ -1,0 +1,35 @@
+<!--pages/airplanNum/airplanNum.wxml-->
+<view class='airplan'>
+  <!-- <scroll-view scroll-y="true" class="scoll-h" > -->
+      <view class='airplanCheck'>
+        <view class="areaInput">
+          <image class='dateChoose' src='../../img/airplan/airplan_icon.png' ></image>
+          <input name="input" placeholder="请输入班次号" bindinput="airplanNum" />
+        </view>
+
+        <picker wx:if='{{showTime}}' mode="multiSelector"  bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+          <view class="areaInput">
+            <image class='dateChoose' src='../../img/airplan/dairy_icon.png' ></image>
+            <view class='{{changeDate?"" : "colorC7"}}'> {{date0}} {{detailTime}}</view>
+            <!-- <input name="input" disabled='true'  placeholder="请选择出发时间" value="{{date0  +  detailTime}}"/> -->
+          </view>
+        </picker>
+
+      <picker wx:if='{{showTime}}' mode="multiSelector"  bindchange="bindMultiPickerChange2" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex2}}" range="{{multiArray2}}">
+          <view class="areaInput">
+            <image class='dateChoose' src='../../img/airplan/dairy_icon.png' ></image>
+            <view class='{{changeDate?"" : "colorC7"}}'> {{date2}} {{detailTime2}}</view>
+            <!-- <input name="input" disabled='true'  placeholder="请选择到达时间" value="{{date2  + detailTime2}}"/> -->
+        </view>
+      </picker>
+
+      <picker wx:else  mode="date" value="{{date}}" start="{{startDate}}" end='{{endDate}}' bindchange="bindDateChange">
+        <view class="areaInput">
+            <image class='dateChoose' src='../../img/airplan/dairy_icon.png' ></image>
+            <input name="input" disabled='true'  placeholder="请选择出发时间" value="{{date}}"/>
+        </view>
+      </picker>
+      <button class='searchAir' hover-class='searchAirAct' bindtap='searchFlightNum' data-type='{{type}}'>确定</button>
+    </view>
+  <!-- </scroll-view> -->
+</view>

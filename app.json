@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/airplanIndex/airplanIndex",
+    "pages/PersonalCenter/seller/SellerHome",
+    "pages/PersonalCenter/PersonalCenter",
+    "pages/PersonalCenter/seller/erweiCode",
+    "pages/PersonalCenter/seller/Cash",
+    "pages/PersonalCenter/seller/CashRecord",
+    "pages/PersonalCenter/seller/cashRule",
+    "pages/PersonalCenter/seller/CommissionRecord",
+    "pages/PersonalCenter/seller/Card",
+    "pages/airplanNum/airplanNum",
+    "pages/trainNum/trainNum",
+    "pages/airplanNumList/airplanNumList",
+    "pages/airplanArrival/airplanArrival",
+    "pages/cityList/cityList",
+    "pages/airplanOrder/airplanOrder",
+    "pages/payOrder/payOrder",
+    "pages/fightOrderInfo/fightOrderInfo",
+    "pages/reg/reg",
+    "pages/ReservationNotes/ReservationNotes"
+  ],
+  "tabBar": {
+    "color": "#AAAAAA",
+    "selectedColor": "#407FFD",
+    "backgroundColor": "#fff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/airplanIndex/airplanIndex",
+        "text": "首页",
+        "iconPath": "img/airplan/home_f.png",
+        "selectedIconPath": "img/airplan/home_s.png"
+      },
+      {
+        "pagePath": "pages/airplanOrder/airplanOrder",
+        "text": "订单",
+        "iconPath": "img/airplan/order_f.png",
+        "selectedIconPath": "img/airplan/order_s.png"
+      },
+      {
+        "pagePath": "pages/PersonalCenter/PersonalCenter",
+        "text": "我的",
+        "iconPath": "img/airplan/my_f.png",
+        "selectedIconPath": "img/airplan/my_s.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundColor": "#eeeeee",
+    "navigationBarBackgroundColor": "#428FFD"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于定位当前城市"
+    }
+  },
+  "networkTimeout": {
+    "request": 6000
+  },
+  "sitemapLocation": "sitemap.json"
+}

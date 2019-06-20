@@ -1,0 +1,73 @@
+@import '../../utils/modal.wxss';
+.bannerTop{
+  height:250rpx;
+  background: -webkit-linear-gradient(top,  #428FFD 20%,#44A0FE 100%);
+}
+.airplan{
+  /* height: 60%; */
+  width: 90%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius:10rpx;
+  position: absolute;
+  top: 180rpx;
+  left: 0;
+  right: 0;
+  box-shadow:1px 5px 18px 1px #dadde2;
+}
+.personalData{
+  height: 130rpx;
+  border-bottom: 3rpx solid#f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:0 30rpx;
+}
+.personalData image{
+  width:32rpx;
+  height:32rpx;
+  margin-right: 20rpx
+}
+.personImg{
+  overflow:hidden;  
+  width: 120rpx;  
+  height: 120rpx;  
+  margin: 0 auto;
+  border-radius: 50%;  
+  border: 1rpx solid #fff;  
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
+}
+.personName{
+  color: #fff;
+  text-align: center
+
+}
+.personalData{
+  height: 130rpx;
+  border-bottom: 3rpx solid#f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:0 30rpx;
+}
+.modal-content{
+  height:100%;
+  line-height:68px;
+  text-align:center;
+}
+.quit{
+  width:80%;
+  height:100rpx;
+  background: -webkit-linear-gradient(left,  #407FFD 30%,#44A0FE 100%);
+  margin:200rpx auto;
+  color:#fff;
+  border-radius:50rpx;
+  /* margin-top:200px; */
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 33rpx
+}
+.flexbox{
+  display: flex;
+  align-items: center
+}

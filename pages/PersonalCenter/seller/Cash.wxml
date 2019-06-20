@@ -1,0 +1,29 @@
+<view class='cardInfo flexView'>
+  <view>到账银行卡 </view>
+  <view class='marginL30'>
+    <view>{{bankName}}({{card}})</view>
+    <view style='font-size:26rpx' class='colorG'>72小时之内到账</view>
+  </view>
+</view>
+
+<view class=' backgroundW cashInfo'>
+  <view class='cashInfoContent borderBottom '>
+    <view class='cashInfotext'> 提现金额</view>
+    <view class='flexView cashDetail'>
+      <view class='moneyIcon'>￥</view>
+      <view class='cashMiddLine'></view>
+      <input name="input" bindinput='cashMoney' placeholder-class='placeholder-class' placeholder="请输入金额" value="{{moneySum}}"/>
+    </view>
+  </view> 
+  <view class='padding30 borderBottom' >
+    <view class='cashInfotext'> 账户金额 ￥{{balance}}, <text class='colorB' bindtap='cashAll'>全部提现</text> </view>
+    <view class='colorG fontS25' style='margin:20rpx 0' catchtap='cashRule'>查看提现规则 ></view>
+    <view class='flexView cashCode'>
+      <input name="input" maxlength='4'  placeholder="请输入验证码" bindinput='inputCode' value="{{}}"/>
+      <view class='colorB' bindtap='getCode' wx:if='{{isCode}}'>获取验证码</view>
+      <view class='colorB' wx:else>{{countDown}}s</view>
+
+    </view>
+  </view>
+  <button hover-class='searchAirAct' bindtap='cathBtn' class='searchAir cashBtn {{currentBgColor==1?"cashBtnBgB":""}}'> 提现</button>
+</view>

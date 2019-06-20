@@ -1,0 +1,48 @@
+.cardInfo{
+  width: 80%;
+  margin: 30rpx auto;
+  padding: 20rpx;
+  align-items: flex-start;
+  justify-content: flex-start
+}
+.cashInfo{
+  padding: 40rpx 0;
+  width: 90%;
+  margin: 0 auto;
+}
+.cashInfoContent{
+  padding:0  30rpx 20rpx;
+  margin-bottom: 30rpx
+}
+
+.cashMiddLine{
+  height: 80rpx;
+  margin: 0 50rpx;
+  border-right: 1px solid #dadded
+}
+.cashDetail{
+  font-size: 55rpx;
+  height: 150rpx
+}
+.cashDetail input{
+  height: 90%
+}
+.cashCode{
+  margin: 50rpx 0
+}
+.cashBtn{
+  width: 90%;
+  background: #ccc;
+  margin: 0 auto;
+  margin-top: 50rpx;
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 32rpx
+}
+.cashBtnBgB{
+  background: -webkit-linear-gradient(left,  #407FFD 30%,#44A0FE 100%);
+}
+.placeholder-class{
+  font-size: 30rpx;
+}

@@ -1,0 +1,154 @@
+/* pages/airplanNum/airplanNum.wxss */
+page{
+  height: 100%;
+}
+.bannerTop{
+  height: 300rpx
+}
+.bannerTop image{
+  width: 100%;
+  height: 100%
+}
+.airplan{
+  height: 650rpx;
+  width: 90%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius:0 0 25rpx 25rpx;
+  padding-top:30rpx;
+  box-shadow:0px 1px 18px 1px #dadde2;
+}
+.tab-content{
+  height: 100%;
+}
+.tab-h{
+    height:90rpx;
+    font-size: 37rpx;
+    background: #EEF6FF;
+    border-top-left-radius:10rpx;
+    border-top-right-radius:10rpx;
+    position:absolute;
+    top:213rpx;
+    left:0;
+    right:0;
+    width:90%;
+    margin:0 auto;
+
+}
+.tab-item{
+    display: inline-block;
+    height: 100%;
+    line-height: 100rpx;
+    color: #94C9FF;
+    width:24%;
+    text-align: center;
+  }
+
+ .tab-item.active{
+    color:#44A0FE;
+    border-bottom: 90rpx solid #fff;
+    border-right: 35rpx solid transparent;
+    height: 0;
+    font-size: 40rpx;
+    width: 20%;
+    margin: 0 0 10px 0;
+    border-radius: 10rpx 10rpx 0 0;
+    font-weight: bold;
+  } 
+.tab-item.activeR{
+    color:#44A0FE;
+    border-bottom: 90rpx solid #fff;
+    border-left: 20rpx solid transparent;
+    border-right: 20rpx solid transparent;
+    border-top-right-radius: 10rpx;
+    height: 0;
+    font-size:40rpx;
+    width: 22%;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+
+}
+.tab-item.activeL{
+    color:#44A0FE;
+    border-bottom: 90rpx solid #fff;
+    border-left: 37rpx solid transparent;
+    font-size:40rpx;
+    border-top-right-radius: 10rpx;
+    height: 0;
+    width: 22%;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+
+}
+.airplanArrInfo{
+  font-size: 25rpx;
+  color: #44A0FE;
+  margin-top: 10rpx
+}
+.areaInput{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 3rpx solid #f7f7f7;
+  padding:10rpx;
+  /* margin-bottom: 20rpx; */
+  height:88rpx;
+  font-size:32rpx;
+}
+.useCarWay{
+  padding:10rpx;
+  height:88rpx;
+  line-height: 88rpx;
+  font-size:32rpx;
+}
+.areaInput input{
+  width: 100%
+}
+.airplanCheck {
+  width: 90%;
+  margin: 0 auto
+}
+.dateChoose{
+  margin-right: 16rpx;
+}
+.airplanImg{
+  width:32rpx;
+  height:25rpx;
+}
+.endAreaImg{
+  width:30rpx;
+  height:35rpx;
+}
+.airplanAreaImg{
+  width:30rpx;
+  height:30rpx;
+}
+.areaChange{
+  width: 70rpx;
+  height: 50rpx;
+}
+
+.searchAir{ 
+  margin-top:40rpx
+}
+.adverImg{
+  width: 96%;
+  height: 245rpx;
+  margin: 0 auto;
+  border-radius: 20rpx;
+  /* box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.2);   */
+}
+.adverImg image{
+  width: 100%;
+  height: 100%
+}
+.colorC{
+  color: #ccc
+}
+
+
+.flexRight{
+  display:flex;
+  align-items: center;
+  justify-content:flex-end;
+}

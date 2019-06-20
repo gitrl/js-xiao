@@ -1,0 +1,11 @@
+<!--pages/PersonalCenter/seller/erweiCode.wxml-->
+<view class='erweiCode flexView'>
+    <view class="img-box">
+      <image bindtap="previewImg" mode="scaleToFill" src="{{imagePath}}"></image>
+    </view>
+    <view class="canvas-box">
+        <canvas hidden="{{canvasHidden}}" style="width: 350rpx;height: 350rpx;" canvas-id="mycanvas"/>
+    </view>
+  <view style='color:#fff'>点击二维码长按转发</view>
+</view>
+

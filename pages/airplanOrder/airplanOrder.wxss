@@ -1,0 +1,208 @@
+/* pages/coupon/coupon.wxss */
+.airPlanOrderd{
+  display: flex;
+  flex-direction: column;
+  display:-webkit-box
+}
+.tab-h{
+    height: 20%;
+    line-height: 80rpx;
+    font-size: 16px;
+    width: 100%;
+    position: absolute; 
+    top:196rpx; 
+}
+.tabTile{
+   display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.bannerTop{
+ height: 280rpx
+}
+.scoll-h{
+  padding-bottom: 30rpx
+}
+.bannerTop image{
+  width: 100%;
+  height: 100%
+}
+.airplan{
+  flex: 1;
+  /* height:76%; */
+  /* overflow-y:scroll  */
+}
+.tab-content {
+  padding-top:20rpx;
+  height:100%;
+}
+
+.tab-item{
+  margin:0 65rpx;
+  display: inline-block;
+  color: #94C9FF ;
+  }
+ .tab-item.active{
+   color: #fff ;
+   position: relative; 
+  } 
+.tab-item.active:after{
+   content: "";
+   display: block;
+   height: 8rpx;
+   width: 100%;
+   background: #fff;
+   position: absolute; 
+   bottom: 0;
+   left: 5rpx;
+   border-radius: 16rpx;
+   }
+.item-ans{
+   /* width: 95%; */
+   margin: 0 auto;
+   display: flex; 
+   position: relative;
+   flex-grow: row no-wrap;
+   justify-content: space-between;
+   box-sizing: border-box; 
+   height:540rpx;
+   align-items: center;
+   /* background: url("http://www.maoniuchuxing.com:1145/img/	ticketpay_s.png") no-repeat;
+   background-size: 100% 100% */
+  }
+.avatar{
+  width:100%;
+  height: 100%;
+  }
+.avatar .img{
+  width: 100%;
+  height: 100%;
+  }
+.avatar .doyen{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  bottom: -2px;
+  right: 20rpx;
+  }
+.expertInfo{
+  font-size: 12px;
+  flex-grow: 2;
+  color: #B0B0B0;
+  line-height: 1.5em;
+  }
+.expertInfo .name{
+  font-size: 16px;
+  color:#000;
+  margin-bottom: 6px;
+  }
+.askBtn{
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 14px; 
+  border-radius: 60rpx;
+  border: 1px solid #4675F9; 
+  color:#4675F9;
+
+  }
+.textalignR{
+  text-align: right
+}
+.couponInfo{
+  position: absolute;
+  font-size:22rpx;
+  left: 55rpx;
+  top:34rpx;
+  box-sizing: border-box;
+  width: 85%;
+  padding: 10rpx 0
+}
+.orderInfo view{
+  line-height: 45rpx
+}
+.type-comm{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  color: #666666;
+}
+.type{
+  font-size: 33rpx;
+}
+.type-comm .addressTo{
+  font-size: 32rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+
+}
+.orderStatus{
+  color: #FEBE00
+}
+.loadMore{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   align-self: center;
+   justify-content: center;
+   color: #c7c7c7
+}
+.iconLoad{
+  margin-right:20rpx;
+
+}
+.move1 {
+   -webkit-animation: myMove1 1s linear infinite;
+    animation: myMove1 1s linear infinite;
+}
+@keyframes myMove1 {
+  from {transform: rotate(-360deg);}
+  to {transform: rotate(360deg);}
+}
+.colorCCC{
+  color: #9B9B9B
+}
+.marginTop{
+  margin-top:72rpx
+}
+.marginTop35{
+  margin-top: 45rpx
+}
+.marginTopBott{
+  margin:45rpx 0
+}
+
+.marginLeft{
+  margin-left: 20rpx
+}
+.cancelBtn{
+  line-height:80rpx;
+  font-size:30rpx;
+  text-align:center;
+}
+.erweiCode{
+  position: absolute;
+  height:100%;
+  width: 100%;
+  top: 0;
+}
+.mengC{
+  background: #000; 
+  opacity: 0.5;
+  height:100%;
+}
+.canvas-box{
+  position: absolute;
+  width: 50%;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.orderInfo{
+  font-size:28rpx;
+}

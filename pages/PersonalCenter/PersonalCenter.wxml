@@ -1,0 +1,55 @@
+<!--pages/PersonalCenter/PersonalCenter.wxml-->
+<view class='bannerTop'>
+  <view class='personImg'> <image src='{{avatarUrl}}' style='width:120rpx;height:120rpx'></image></view>
+  <view class='personName'>{{nickName}}</view>
+</view>
+<view class='airplan'>
+    <view class='personalData'>
+      <view class='flexbox'>
+          <image src='../../img/airplan/person_icon.png'></image>
+          <text >性别</text>
+      </view>
+      <view wx:if='{{gender == 1}}'>男</view>
+      <view wx:if='{{gender == 2}}'>女</view>
+      <view wx:if='{{gender == 0}}'>未知</view>
+    </view>
+    <view class='personalData' bindtap='Personaldetail'>
+      <view class='flexbox'>
+      <image style='width:26rpx;height:38rpx;' src='../../img/airplan/phone_icon.png'/>
+        <text>联系电话</text> 
+      </view>
+      <view>{{mobileNum}}</view>
+    </view>
+
+   <view class='personalData' bindtap='callMobile'>
+      <view class='flexbox'>
+        <image src='../../img/airplan/call_icon.png'/>
+        <text>客服</text>
+      </view>
+      <view>400-656-2666</view>
+    </view>
+    <view class='personalData' catchtap='sellerCenter'>
+      <view class='flexbox'>
+        <image src='../../img/airplan/fx_icon.png'/>
+        <text>分销中心</text>
+      </view>
+      <view><image style='width:14rpx;height:18rpx' src='../../img/airplan/right_icon.png'></image></view>
+
+    </view>
+</view>
+  <view class='quit' hover-class='searchAirAct' style='margin-top:500rpx' bindtap='clearUser'>退出登录</view> 
+
+<view class='mask' wx:if='{{showModal}}'>
+  <view class='modal-content' style='height:20%'>
+    <scroll-view scroll-y class='main-content'>
+    <slot></slot>
+      是否获取微信个人信息?
+    </scroll-view>
+    <view class='modal-btn-wrapper'>
+      <view class='cancel-btn'  bindtap='modalCancel'>取消</view>
+      <view class='confirm-btn'>
+        <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" >同意</button>
+      </view>
+    </view>
+  </view>
+</view>

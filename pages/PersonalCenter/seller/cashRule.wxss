@@ -1,0 +1,15 @@
+/* pages/PersonalCenter/seller/cashRule.wxss */
+page{
+  background: #fff
+}
+.cashRule{
+  padding: 30rpx 50rpx
+}
+.cashRuleItem{
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #9B9B9B
+}
+.cashRuleMidd{
+  margin: 30rpx 0
+}

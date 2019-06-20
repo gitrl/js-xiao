@@ -1,0 +1,29 @@
+.commissionTop{
+  padding: 40rpx 0;
+  text-align: center;
+  margin-bottom: 30rpx
+}
+.commissionSum{
+  font-size: 40rpx;
+  margin: 20rpx 0
+}
+.commissionTime{
+  justify-content: center;
+  margin-top: 20rpx
+}
+.commissionTime input{
+  width: 180rpx;
+  border: 1px solid #dadded;
+  margin: 0 20rpx
+}
+.commissionOrder{
+  /* padding: 5rpx 30rpx; */
+  font-size: 26rpx;
+  line-height:50rpx
+}
+
+.noContext{
+  justify-content:center;
+  height:700rpx;
+  flex-direction: column
+}

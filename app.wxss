@@ -1,0 +1,85 @@
+page{
+  font-size:30rpx;
+  background-color: #FAFAFA
+}
+.searchAir{
+  border: 0;
+  border-color: #44a0fe;
+  color: #fff;
+  border-radius:50rpx;
+  /* 渐变背景 */
+  background: -webkit-linear-gradient(left,  #407FFD 30%,#44A0FE 100%);
+}
+.fontS25{
+  font-size: 25rpx
+}
+.textAlignCenter{
+  text-align: center
+}
+.textAlignR{
+  text-align: right
+}
+.searchAirAct {
+ background:#407FFD;
+ opacity: 0.6
+}
+button::after {
+  border: none;
+}
+.flexView{
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.marginL30{
+  margin-left: 30rpx
+}
+.marginL80{
+   margin-left: 80rpx
+}
+.backgroundW{
+  background: #fff
+}
+.padding30{
+  padding: 0 30rpx
+}
+.paddingTop15{
+  padding:8rpx 30rpx
+}
+.borderBottom{
+  border-bottom: 1px solid #dadded;
+}
+.colorB{
+  color: #407FFD
+}
+.colorY{
+  color: #FEBE00
+}
+.colorG{
+  color: #9B9B9B
+}
+/* 加载更多效果 */
+.loadMore{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   /* align-self: center; */
+   justify-content: center;
+   color: #c7c7c7
+}
+.iconLoad{
+  margin-right:20rpx;
+
+}
+.move1 {
+   -webkit-animation: myMove1 1s linear infinite;
+    animation: myMove1 1s linear infinite;
+}
+@keyframes myMove1 {
+  from {transform: rotate(-360deg);}
+  to {transform: rotate(360deg);}
+}
+.placeClass{
+  color: #CECECE
+}

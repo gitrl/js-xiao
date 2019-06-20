@@ -1,0 +1,42 @@
+<!--pages/PersonalCenter/seller/commission.wxml-->
+<view class='commissionTop backgroundW flexView'>
+<view class='flexView'>
+  <Select prop-array='{{selectArray}}' bind:myget='getDate' nowText=" "></Select>
+  <view>收入</view>
+</view>
+
+  <view class='commissionSum'>{{balance}} 元</view>
+</view>
+<view class='flexView noContext' wx:if='{{isShow}}'> 
+    <image style='width:350rpx;height:280rpx' src='../../../img/kongContext.png'></image>
+    <view class='colorG' style='margin-top:50rpx'>当前时段未查询到记录哦</view>
+</view>
+<view class='commissionOrder backgroundW '  wx:else>
+  <view class='flexView borderBottom commissionList' wx:for="{{flightList}}" wx:key="index">
+      <view style='width:80%'>
+        <view class='flexView'>
+          <view>订单号: {{item.orderNumber}}</view>
+          <view> ￥{{orderAmount[index]}}</view>
+        </view>
+        <view class='flexView colorG'>
+          <view wx:if='{{item.orderType == 1}}'>接机</view>
+          <view wx:if='{{item.orderType == 2}}'>送机</view>
+          <view wx:if='{{item.orderType == 3}}'>接站</view>
+          <view wx:if='{{item.orderType == 4}}'>送站</view>
+          <view> {{createDate[index]}} {{createTime[index]}}</view>
+        </view>
+      </view>
+      <view class='commissionOrderRight colorY'>+{{resellerAmount[index]}}</view>
+  </view>
+    <view class="tips1" style='margin-top:40rpx'>
+      <view wx:if="{{hasMore}}" class='loadMore'>
+        <icon class='iconLoad move1' type="waiting" size="20"/><text>加载中...</text>
+      </view>
+      <view wx:else class='loadMore'><text>没有更多内容了</text></view>
+    </view>
+</view>
+
+<view class='orderStatus flexView'>
+  <view class='{{currentTab==2?"currentTab":""}} orderStatusItem' data-current="2" bindtap="swichNav">已结算</view>
+  <view class='{{currentTab==1?"currentTab":""}} orderStatusItem' data-current="1" bindtap="swichNav">待结算</view>
+</view>

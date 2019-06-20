@@ -1,0 +1,31 @@
+<view class='cardInfoTop'>
+  <view class='cardInfo flexView'>
+    <view>姓 名</view>
+    <view class='marginL80'><input type='text' bindinput='inUserName' disabled='{{isDisable}}' placeholder='请输入姓名' value='{{name}}'></input></view>
+  </view>
+    <view class='cardInfo flexView'>
+    <view>身份证号</view>
+    <view class='marginL30'>
+      <input type='text' bindinput='inIdCard' maxlength='18'  disabled='{{isDisable}}' placeholder='请输入身份证号' value='{{idCard}}'></input>
+    </view>
+  </view>
+  <view class='cardInfo flexView'>
+    <view>银行卡号</view>
+    <view class='marginL30'>
+      <input type='text' bindinput='inCard'  disabled='{{isDisable}}' placeholder='请输入银行卡号' value='{{card}}'></input>
+    </view>
+  </view>
+  <view class='cardInfo flexView'>
+    <view>联系电话</view>
+    <view class='marginL30'><input type='text' value='{{phone}}' disabled='true'></input></view>
+  </view>
+  <view class='cardInfo flexView'>
+    <view>验 证 码</view>
+    <view class='marginL30'><input type='text' bindinput='inCheckCode' maxlength='4' placeholder='请输入验证码'></input></view>
+    <view class='colorB' bindtap='getCode' wx:if='{{isCode}}'>获取验证码</view>
+    <view class='colorB' wx:else>{{countDown}}s</view>
+  </view>
+</view>
+<view class='bindCardExplain' bindtap='bindCardRule'>银行卡绑定说明 ></view>
+<button hover-class='searchAirAct' bindtap='unBandCard' class='bindingBtn searchAir' wx:if='{{isBind}}'>解绑</button>
+<button hover-class='searchAirAct' bindtap='bandCard' class='bindingBtn searchAir' wx:else>绑定</button>

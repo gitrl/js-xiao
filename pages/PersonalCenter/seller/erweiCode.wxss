@@ -1,0 +1,23 @@
+/* pages/PersonalCenter/seller/erweiCode.wxss */
+page{
+  height: 100%;
+  background-color: #fff;
+}
+.erweiCode{
+  height:60%;
+  background:url(http://www.maoniuchuxing.com:1145/img/xcx-js/ticketbg_pic.png) no-repeat;
+  background-size:100% 100%;
+  width:80%;
+  margin:100rpx auto;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+
+.img-box image {
+  width: 400rpx;
+  height: 400rpx;
+  margin-top: 20rpx;
+}
+
+.canvas-box{position: fixed;top:999999rpx;left: 0}

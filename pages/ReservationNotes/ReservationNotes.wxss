@@ -1,0 +1,25 @@
+/* pages/ReservationNotes/ReservationNotes.wxss */
+#bookNotice{
+  height: 100%;
+  background: #ffffff;
+  padding-bottom:30rpx;
+}
+.rule-header{
+  font-size:30rpx;
+  text-align: left;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  color: #222231
+  }
+.viewadT1{padding-top: 10rpx;}
+
+.fontW{
+  font-weight: bold;
+}
+.viewad1D5{
+  padding:30rpx;
+  color:#666666;
+  font-size:28rpx;
+}
+
+.lineH2{line-height: 40rpx;}

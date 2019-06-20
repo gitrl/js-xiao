@@ -1,0 +1,288 @@
+<view style='height:{{winHeight}}px;width:100%'>
+  <view class='bannerTop'>
+   <image src='../../img/airplan/banner_pic.png'></image>
+  </view>
+  <view class='airplan'>
+    <view class="tab-h" >
+      <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">接机</view>
+      <view class="tab-item {{currentTab==1?'activeR':''}}" data-current="1" bindtap="swichNav">送机</view>
+      <view class="tab-item {{currentTab==2?'activeR':''}}" data-current="2" bindtap="swichNav">接站</view>
+      <view class="tab-item {{currentTab==3?'activeL':''}}" data-current="3" bindtap="swichNav">送站</view>
+    </view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="200" bindchange="switchTab">
+      <!-- 接机 -->
+      <swiper-item>
+        <!-- <scroll-view scroll-y="true" class="scoll-h" style="height:600rpx;"> -->
+          <view class='airplanCheck'>
+            <view class="areaInput" data-type='takeAir'  bindtap="{{!buttonClicked?'chooseAirplan':''}}">
+              <view data-type='takeAir' >
+                  <image class='dateChoose airplanImg' src='../../img/airplan/ticket_icon.png' ></image>
+              </view>
+              <view data-type='takeAir'>
+                <!-- <view data-type='takeAir'>{{airplanNum}}</view> -->
+                <input name="input" data-type='takeAir' value='{{airplanNum}}' disabled='true' placeholder-class='placeClass' placeholder="请输入航班号"/>
+                <view class='airplanArrInfo' data-type='takeAir' wx:if="{{isShow1}}">{{flightDate}} 计划 {{flightArrTime}} 抵达</view>
+              </view>
+            </view>
+            <view class="areaInput">
+              <image class='airplanAreaImg dateChoose' src='../../img/airplan/exchange_icon.png' ></image>
+              <view>
+                <view>贡嘎机场</view>  
+                <view class='airplanArrInfo' wx:if="{{isShow1}}">用车时间(计划) {{useCarTime}}</view>
+              </view>
+            </view>
+            <view class="areaInput" bindtap='chooseArrival' data-type='takeAir'>
+              <image class='endAreaImg dateChoose' src='../../img/airplan/dizhi_icon.png' ></image>
+              <!-- <view>{{takeEnd.title}}</view> -->
+              <input name="input" data-type='takeAir' placeholder-class='placeClass' disabled='true' value='{{takeEnd.title}}' placeholder="请选择目的地" />
+            </view>
+            <!-- 用车方式  -->
+            <view class="useCarWay">
+              <view class='flexView' style='width:100%'>
+                <view  class='flexView'>
+                  <image class='dateChoose' style='width:42rpx;height:32rpx' src='/img/airplan/car_icon.png' ></image>
+                  <text> 用车方式:</text>
+                </view>
+                <view  class='flexView' data-usecarway='pingcar' bindtap='chanceUseCarWay'>
+                  <image 
+                  class='dateChoose' 
+                  style='width:36rpx;height:36rpx'  
+                  src='{{useCarWay == true ? "/img/airplan/choose_carType.png" :"/img/airplan/nochoose_carType.png"}}' >
+                  </image>
+                  <text> 拼车</text>
+                </view>
+                <view  class='flexView' data-usecarway='baocar' bindtap='chanceUseCarWay' data-cartypeindex='0'>
+                 <image class='dateChoose'
+                 style='width:36rpx;height:36rpx' 
+                 src='{{useCarWay == false ? "/img/airplan/choose_carType.png" :"/img/airplan/nochoose_carType.png"}}' >
+                 </image>
+                  <text> 包车</text>
+                </view>
+              </view>
+            </view>
+            <view wx:if='{{carTypeFlag}}'>
+              <picker bindchange="chanceCarType" value="{{index}}"  range="{{array}}" wx:if='{{useCarWay== false}}'>
+                <view class='flexRight'>
+                  <input class='textAlignR colorG' value='{{array[index]}}' disabled='true' placeholder='请选择车型'></input>
+                  <image src='/img/airplan/right_icon.png' style='width:20rpx;height:24rpx;margin-left:18rpx'></image>
+                </view>
+              </picker>
+            </view>
+            <view wx:else >
+              <picker bindchange="chanceCarType" bindtap='carTypeFlag'  value="{{index}}" disabled range="{{array}}" wx:if='{{useCarWay== false}}'>
+                <view class='flexRight'>
+                  <input class='textAlignR colorG' disabled='true' placeholder='请选择车型'></input>
+                  <image src='/img/airplan/right_icon.png' style='width:20rpx;height:24rpx;margin-left:18rpx'></image>
+                </view>
+              </picker>
+            </view>
+            
+            <button class='searchAir' hover-class='searchAirAct' data-flight='{{airplanNum}}' data-ordertype='1' data-place='{{takeEnd}}' bindtap='fightOrderInfoPage'>预约用车</button>
+          </view>
+        <!-- </scroll-view> -->
+      </swiper-item >
+      <!-- 送机 -->
+      <swiper-item>
+        <!-- <scroll-view scroll-y="true" class="scoll-h" > -->
+            <view class='airplanCheck'>
+              <view class="areaInput" data-type='sendAir' >
+                <image class='dateChoose airplanImg' src='../../img/airplan/ticket_icon.png' ></image>
+                <view>
+                  <input name="input" data-type='sendAir' placeholder-class='placeClass' value='{{airplanNum2}}' disabled='true' bindtap='chooseAirplan' placeholder="请输入航班号"/>
+                  <view class='airplanArrInfo' wx:if="{{isShow2}}">{{flightDate}} 计划 {{flightDepTime}} 起飞</view>
+                </view>
+              </view>
+              <view class="areaInput" data-type='sendAir'>
+                <image class='dateChoose endAreaImg' src='../../img/airplan/dizhi_icon.png' ></image>
+                <input name="input" data-type='sendAir' placeholder-class='placeClass' disabled='true' value='{{sendStart.title}}' bindtap='chooseArrival' placeholder="请选择出发地" />
+              </view>
+              <view class="areaInput">
+                <image class='dateChoose airplanAreaImg' src='../../img/airplan/exchange_icon.png' ></image>
+                  <view>
+                    <view >贡嘎机场</view>  
+                    <view class='airplanArrInfo' wx:if="{{isShow2}}">用车时间(计划) {{useCarTime}}</view>
+                  </view>
+              </view>
+                <!-- 用车方式  -->
+              <view class="useCarWay">
+                <view class='flexView' style='width:100%'>
+                  <view  class='flexView'>
+                    <image class='dateChoose' style='width:42rpx;height:32rpx' src='/img/airplan/car_icon.png' ></image>
+                    <text> 用车方式:</text>
+                  </view>
+                  <view  class='flexView' data-usecarway='pingcar' bindtap='chanceUseCarWay' >
+                    <image 
+                    class='dateChoose' 
+                    style='width:36rpx;height:36rpx'  
+                    src='{{useCarWay == true? "/img/airplan/choose_carType.png" :"/img/airplan/nochoose_carType.png"}}' >
+                    </image>
+                    <text> 拼车</text>
+                  </view>
+                  <view  class='flexView' data-usecarway='baocar' bindtap='chanceUseCarWay' data-cartypeindex='1'>
+                  <image class='dateChoose'
+                  style='width:36rpx;height:36rpx' 
+                  src='{{useCarWay == false? "/img/airplan/choose_carType.png" :"/img/airplan/nochoose_carType.png"}}' >
+                  </image>
+                    <text> 包车</text>
+                  </view>
+                </view>
+              </view>
+              <view wx:if='{{carTypeFlag}}'>
+                <picker bindchange="chanceCarType"  value="{{index}}"  range="{{array}}" wx:if='{{useCarWay== false}}'>
+                  <view class='flexRight'>
+                    <input class='textAlignR colorG' value='{{array[index]}}' disabled='true' placeholder='请选择车型'></input>
+                    <image src='/img/airplan/right_icon.png' style='width:20rpx;height:24rpx;margin-left:18rpx'></image>
+                  </view>
+                </picker>
+              </view>
+              <view wx:else >
+                <picker bindchange="chanceCarType" bindtap='carTypeFlag' value="{{index}}" disabled range="{{array}}" wx:if='{{useCarWay== false}}'>
+                  <view class='flexRight'>
+                    <input class='textAlignR colorG'  disabled='true' placeholder='请选择车型'></input>
+                    <image src='/img/airplan/right_icon.png' style='width:20rpx;height:24rpx;margin-left:18rpx'></image>
+                  </view>
+                </picker>
+              </view>
+              <button class='searchAir' hover-class='searchAirAct' data-flight='{{airplanNum2}}' data-ordertype='2' data-place='{{sendStart}}' bindtap='fightOrderInfoPage'>预约用车</button>
+          </view>
+        <!-- </scroll-view> -->
+      </swiper-item>
+      <!-- 接站 -->
+      <swiper-item > 
+        <!-- <scroll-view scroll-y="true"  class="scoll-h" > -->
+          <view class='airplanCheck takeTrain'>
+              <view class="areaInput">
+                <image class='dateChoose airplanImg' src='../../img/airplan/ticket_icon.png' ></image>
+                <view>
+                  <input name="input" data-type='takeTrain' placeholder-class='placeClass' value='{{trainNum}}' disabled='true' bindtap='chooseTrain' placeholder="请输入班次号"/>
+                  <view class='airplanArrInfo' wx:if="{{isShow3}}">{{flightDate}} 计划 {{flightArrTime}} 抵达</view>
+                </view>
+              </view>
+              <view class="areaInput">
+                <image class='airplanAreaImg dateChoose' src='../../img/airplan/exchange_icon.png' ></image>
+                <view>
+                  <view>拉萨火车站</view>  
+                  <view class='airplanArrInfo' wx:if="{{isShow3}}">用车时间(计划) {{useCarTime}}</view>
+                </view>
+              </view>
+                <view class="areaInput">
+                 <image class='dateChoose endAreaImg' src='../../img/airplan/dizhi_icon.png' ></image>
+                 <input name="input" data-type='takeTrain' placeholder-class='placeClass' disabled='true'  value='{{trainEnd.title}}' bindtap='chooseArrival' placeholder="请选择目的地" />
+                </view>
+                <!-- 用车方式  -->
+              <view class="useCarWay">
+              <view class='flexView' style='width:100%'>
+                <view  class='flexView'>
+                  <image class='dateChoose' style='width:42rpx;height:32rpx' src='/img/airplan/car_icon.png' ></image>
+                  <text> 用车方式:</text>
+                </view>
+                <view  class='flexView' data-usecarway='pingcar' bindtap='chanceUseCarWay'>
+                  <image 
+                  class='dateChoose' 
+                  style='width:36rpx;height:36rpx'  
+                  src='{{useCarWay == true? "/img/airplan/choose_carType.png" :"/img/airplan/nochoose_carType.png"}}' >
+                  </image>
+                  <text> 拼车</text>
+                </view>
+                <view  class='flexView' data-usecarway='baocar' bindtap='chanceUseCarWay' data-cartypeindex='2'>
+                 <image class='dateChoose'
+                 style='width:36rpx;height:36rpx' 
+                 src='{{useCarWay == false? "/img/airplan/choose_carType.png" :"/img/airplan/nochoose_carType.png"}}' >
+                 </image>
+                  <text> 包车</text>
+                </view>
+              </view>
+            </view>
+            <view wx:if='{{carTypeFlag}}'>
+              <picker bindchange="chanceCarType" value="{{index}}"  range="{{array}}" wx:if='{{useCarWay== false}}'>
+                <view class='flexRight'>
+                  <input class='textAlignR colorG' value='{{array[index]}}' disabled='true' placeholder='请选择车型'></input>
+                  <image src='/img/airplan/right_icon.png' style='width:20rpx;height:24rpx;margin-left:18rpx'></image>
+                </view>
+              </picker>
+            </view>
+            <view wx:else >
+              <picker bindchange="chanceCarType" bindtap='carTypeFlag'  value="{{index}}" disabled range="{{array}}" wx:if='{{useCarWay== false}}'>
+                <view class='flexRight'>
+                  <input class='textAlignR colorG' disabled='true' placeholder='请选择车型'></input>
+                  <image src='/img/airplan/right_icon.png' style='width:20rpx;height:24rpx;margin-left:18rpx'></image>
+                </view>
+              </picker>
+            </view>
+            <button class='searchAir' hover-class='searchAirAct' data-flight='{{trainNum}}' data-ordertype='3' data-place='{{trainEnd}}' bindtap='trainOrderInfoPage'>预约用车</button>
+          </view>
+        <!-- </scroll-view> -->
+      </swiper-item>
+      <!-- 送站 -->
+      <swiper-item >
+        <!-- <scroll-view scroll-y="true" class="scoll-h" > -->
+          <view class='airplanCheck'>
+            <view class="areaInput">
+                <image class='dateChoose airplanImg' src='../../img/airplan/ticket_icon.png' ></image>
+                <view>
+                  <input name="input" data-type='sendTrain' placeholder-class='placeClass' value='{{trainNum2}}' disabled='true' bindtap='chooseTrain' placeholder="请输入班次号"/>
+                  <view class='airplanArrInfo' wx:if="{{isShow4}}">{{flightDate}} 计划 {{flightArrTime}} 出发</view>
+                </view>
+            </view>
+            <view class="areaInput">
+              <image class='dateChoose endAreaImg' src='../../img/airplan/dizhi_icon.png' ></image>
+              <input name="input" data-type='sendTrain' placeholder-class='placeClass' disabled='true'  value='{{trainStart.title}}' bindtap='chooseArrival' placeholder="请选择出发地" />
+            </view>
+            <view class="areaInput">
+                <image class='dateChoose airplanAreaImg' src='../../img/airplan/exchange_icon.png' ></image>
+                <view>
+                <view>拉萨火车站</view>  
+                <view class='airplanArrInfo' wx:if="{{isShow4}}">用车时间(计划) {{useCarTime}}</view>
+              </view>
+            </view>
+              <!-- 用车方式  -->
+              <view class="useCarWay">
+              <view class='flexView' style='width:100%'>
+                <view  class='flexView'>
+                  <image class='dateChoose' style='width:42rpx;height:32rpx' src='/img/airplan/car_icon.png' ></image>
+                  <text> 用车方式:</text>
+                </view>
+                <view  class='flexView' data-usecarway='pingcar' bindtap='chanceUseCarWay'>
+                  <image 
+                  class='dateChoose' 
+                  style='width:36rpx;height:36rpx'  
+                  src='{{useCarWay == true? "/img/airplan/choose_carType.png" :"/img/airplan/nochoose_carType.png"}}' >
+                  </image>
+                  <text> 拼车</text>
+                </view>
+                <view  class='flexView' data-usecarway='baocar' bindtap='chanceUseCarWay' data-cartypeindex='3'>
+                 <image class='dateChoose'
+                 style='width:36rpx;height:36rpx' 
+                 src='{{useCarWay == false? "/img/airplan/choose_carType.png" :"/img/airplan/nochoose_carType.png"}}' >
+                 </image>
+                  <text> 包车</text>
+                </view>
+              </view>
+            </view>
+            <view wx:if='{{carTypeFlag}}'>
+              <picker bindchange="chanceCarType" value="{{index}}"  range="{{array}}" wx:if='{{useCarWay== false}}'>
+                <view class='flexRight'>
+                  <input class='textAlignR colorG' value='{{array[index]}}' disabled='true' placeholder='请选择车型'></input>
+                  <image src='/img/airplan/right_icon.png' style='width:20rpx;height:24rpx;margin-left:18rpx'></image>
+                </view>
+              </picker>
+            </view>
+            <view wx:else >
+              <picker bindchange="chanceCarType" bindtap='carTypeFlag'  value="{{index}}" disabled range="{{array}}" wx:if='{{useCarWay== false}}'>
+                <view class='flexRight'>
+                  <input class='textAlignR colorG' disabled='true' placeholder='请选择车型'></input>
+                  <image src='/img/airplan/right_icon.png' style='width:20rpx;height:24rpx;margin-left:18rpx'></image>
+                </view>
+              </picker>
+            </view>
+            <button class='searchAir' hover-class='searchAirAct' data-flight='{{trainNum2}}' data-ordertype='4' data-place='{{trainStart}}' bindtap='trainOrderInfoPage'>预约用车</button>
+          </view>
+        <!-- </scroll-view> -->
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class='adverImg'>
+    <image  src='../../img/airplan/ad_pic.png'></image>
+  </view>
+</view>
+

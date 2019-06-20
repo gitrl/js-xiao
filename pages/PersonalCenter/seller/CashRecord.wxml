@@ -1,0 +1,43 @@
+<view class='commissionTop backgroundW'>
+  <view class='commissionSum'> <text style='font-size:26rpx'>累计提现：</text>{{balance}} 元</view>
+  <view class='colorG'>统计时间</view>
+  <view class='commissionTime flexView'>
+    <picker  mode="date" value="{{dateValue}}" end='{{endDate}}' bindchange="bindDateChange">
+      <input name="input" disabled='true'  placeholder="开始日期" value="{{dateValue}}"/>
+    </picker>
+    <view>至</view>
+    <picker  mode="date" value="{{dateValue2}}" end='{{endDate}}' bindchange="bindDate2Change">
+      <input name="input" disabled='true'  placeholder="截止日期" value="{{dateValue2}}"/>
+    </picker>
+  </view>
+</view>
+
+<view class='flexView noContext' wx:if='{{isShow}}'> 
+    <image style='width:350rpx;height:280rpx' src='../../../img/kongContext.png'></image>
+    <view class='colorG' style='margin-top:50rpx'>当前时段未查询到记录哦</view>
+</view>
+<!-- 列表 -->
+<view wx:else>
+  <view class='commissionOrder backgroundW ' >
+    <block  wx:for="{{flightList}}" wx:key="*this">
+      <view class='flexView borderBottom paddingTop15'>
+        <view class=''>
+          <view class='colorG'>  {{createDate[index]}} {{createTime[index]}}</view>
+          <view>流水号: {{item.withdrawalId}}</view>
+        </view>
+        <view class=''>
+          <view class='colorG' wx:if='{{item.status==3}}'>提现成功</view>
+          <view class='colorY' wx:else>提现中</view>
+          <!-- <view class='colorY' wx:if='{{item.status==3}}'>提现失败</view> -->
+          <view>-{{amount[index]}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="tips1" style='margin-top:12rpx'>
+    <view wx:if="{{hasMore}}" class='loadMore'>
+      <icon class='iconLoad move1' type="waiting" size="20"/><text>加载中...</text>
+    </view>
+    <view wx:else class='loadMore'><text>没有更多内容了</text></view>
+  </view>
+</view>

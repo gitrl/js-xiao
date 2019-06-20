@@ -1,0 +1,7 @@
+<view class='bgImg'>
+  <image src='../../img/airplan/nodata_pic.png'></image>
+</view>
+<view class='textAlignCenter colorG'>未登录账号，无法使用该业务</view>
+<view class='container'>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信一键登录</button>
+</view>
